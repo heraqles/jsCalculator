@@ -1,0 +1,25 @@
+.main {
+  margin: 10vh auto;
+  height: 80vh;
+  width: 80%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background-image: -webkit-linear-gradient(bottom left, #FA7575 20%, #FA9898 40%);
+  background-image: linear-gradient(to top right, #FA7575 20%, #FA9898 40%); }
+
+.calculator {
+  height: 500px;
+  width: 300px;
+  background: #CFCACA; }
+  .calculator .screen {
+    background: #CFCACA; }
