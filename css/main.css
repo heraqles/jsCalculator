@@ -34,11 +34,37 @@
   .calculator .screen {
     background: #FA7575;
     width: 100%;
-    height: 150px; }
+    height: 150px;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex; }
+    .calculator .screen input {
+      width: 90%;
+      height: 40%;
+      background-color: transparent;
+      border: 1px #eee solid;
+      font-size: 2em;
+      padding: 0 10px;
+      text-align: center; }
   .calculator .keyboard {
     background: #fff;
     width: 100%;
     height: 300px; }
+    .calculator .keyboard button {
+      margin: 10px;
+      width: 40px;
+      height: 40px;
+      background: transparent;
+      border: 0; }
   .calculator:hover {
     -webkit-transform: rotateX(0) rotateY(0) rotateZ(0);
             transform: rotateX(0) rotateY(0) rotateZ(0); }
