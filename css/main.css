@@ -17,11 +17,28 @@
   background-image: -webkit-linear-gradient(bottom left, #FA7575 20%, #FA9898 40%);
   background-image: linear-gradient(to top right, #FA7575 20%, #FA9898 40%); }
 
+.perspective {
+  -webkit-perspective: 1000px;
+          perspective: 1000px; }
+
 .calculator {
-  height: 500px;
+  height: 580px;
   width: 300px;
   background: #CFCACA;
   border-radius: 15px;
-  box-shadow: -3px 3px 0 #BBB, -6px 6px 0 #BBB, -9px 9px 0 #BBB, -12px 12px 0 #BBB, -14px 10px 20px #666; }
+  box-shadow: 5px -2px 0 #bbb, 9px -6px 0 #bbb, 12px -7px 0 #bbb, 15px -10px 0 #bbb, 0 7px 20px #999;
+  -webkit-transition: -webkit-transform 1s ease-in;
+  transition: -webkit-transform 1s ease-in;
+  transition: transform 1s ease-in;
+  transition: transform 1s ease-in, -webkit-transform 1s ease-in; }
   .calculator .screen {
-    background: #CFCACA; }
+    background: #FA7575;
+    width: 100%;
+    height: 150px; }
+  .calculator .keyboard {
+    background: #fff;
+    width: 100%;
+    height: 300px; }
+  .calculator:hover {
+    -webkit-transform: rotateX(0) rotateY(0) rotateZ(0);
+            transform: rotateX(0) rotateY(0) rotateZ(0); }
