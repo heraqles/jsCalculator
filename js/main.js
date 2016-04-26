@@ -8,6 +8,7 @@
 
     function addValue(key){
         screenVal.value += key;
+        console.log(typeof(screenVal.value));
     }
 
     function clearScreen(){
@@ -16,17 +17,34 @@
 
     function removeLast(){
         screenVal.value = screenVal.value.slice(0, -1);
+        console.log(typeof(screenVal.value));
     }
 
     function calculate(){
-        var value = screenVal.value;
+        //parseInt eliminate unuses 0
+        var s = screenVal.value,
+            value = s.replace(/^0+/, '');
+            console.log(typeof(screenVal.value));
         screenVal.value = eval(value);
+
     }
 
     function changeMark(){
-        
+        var value = screenVal.value,
+            re = /^\d+$/;
+        if (re.test(value)){
+            value = (value * (-1));
+            screenVal.value = value;
+        }
     }
-
+    function percent(){
+        var value = screenVal.value,
+            re = /^\d+$/;
+        if (re.test(value)){
+            value = value * 0.01;
+            screenVal.value = value;
+        }
+    }
     function keyValue(e){
         var key = e.target.innerHTML;
         if(e.target && e.target.nodeName === 'BUTTON'){
@@ -38,6 +56,9 @@
                 removeLast();
             }else if (key === '+/-'){
                 changeMark();
+            }else if (key === '%'){
+                addValue(key);
+                percent();
             }else{
                 addValue(key);
             }
