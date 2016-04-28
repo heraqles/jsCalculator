@@ -8,7 +8,6 @@
 
     function addValue(key){
         screenVal.value += key;
-        console.log(typeof(screenVal.value));
     }
 
     function clearScreen(){
@@ -45,7 +44,7 @@
             screenVal.value = value;
         }
     }
-    function keyValue(e){
+    function buttonValue(e){
         var key = e.target.innerHTML;
         if(e.target && e.target.nodeName === 'BUTTON'){
             if(key === '='){
@@ -64,7 +63,21 @@
             }
         }
     }
+    function keyValue(e){
+        var keyChar = String.fromCharCode(e.keyCode),
+            key = e.keyCode;
+        if(keyChar === '='){
+            calculate();
+        }else if (keyChar === 'c'){
+            clearScreen();
+        }else if (key === 8){
+            removeLast();
+        }else{
+            addValue(keyChar);
+        }
+    }
 
-    keyboard.addEventListener('click', keyValue, false);
+    keyboard.addEventListener('click', buttonValue, false);
+    document.addEventListener('keyup', keyValue, false);
 
 })();
