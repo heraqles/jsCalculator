@@ -1,6 +1,7 @@
 .main {
   margin: 10vh auto;
   height: 80vh;
+  position: relative;
   width: 80%;
   display: -webkit-box;
   display: -webkit-flex;
@@ -16,6 +17,17 @@
           justify-content: center;
   background-image: -webkit-linear-gradient(bottom left, #FA7575 20%, #FA9898 40%);
   background-image: linear-gradient(to top right, #FA7575 20%, #FA9898 40%); }
+  .main .change {
+    position: absolute;
+    left: 50px;
+    color: #fff;
+    top: 50px;
+    background: -webkit-linear-gradient(bottom left, #fe4b4b 48%, #fd5e5e 72%);
+    background: linear-gradient(to top right, #fe4b4b 48%, #fd5e5e 72%);
+    padding: 20px;
+    text-transform: uppercase;
+    font-weight: bold;
+    border-radius: 3px; }
 
 .perspective {
   -webkit-perspective: 1000px;
@@ -24,16 +36,21 @@
 .calculator {
   height: 580px;
   width: 300px;
-  padding-top: 50px;
-  background: #CFCACA;
-  border-radius: 15px;
-  box-shadow: 5px 2px 0 #bbb, 9px 6px 0 #bbb, 12px 7px 0 #bbb, 15px 10px 0 #bbb, 0 7px 20px #999;
-  -webkit-transition: -webkit-transform 1s ease-in;
-  transition: -webkit-transform 1s ease-in;
-  transition: transform 1s ease-in;
-  transition: transform 1s ease-in, -webkit-transform 1s ease-in; }
+  padding-top: 90px;
+  border: transparent;
+  -webkit-transition: border 0.5s ease-in;
+  transition: border 0.5s ease-in;
+  background: #ebeae6;
+  -webkit-transform: rotateX(33deg) rotateY(-10deg) rotateZ(60deg);
+          transform: rotateX(33deg) rotateY(-10deg) rotateZ(60deg);
+  border-radius: 50px;
+  box-shadow: 6px 2px 0 #c7cccf, 11px 4px 0 #c7cccf, 11px 8px 0 #c7cccf, 4px 4px 0 #c7cccf, 19px 11px 0px #c7cccf, 20px 13px 0 #c7cccf;
+  -webkit-transition: all 0.5s ease-in;
+  transition: all 0.5s ease-in; }
   .calculator .screen {
-    background: #FA7575;
+    box-shadow: 0px -15px 0px #df4a4a;
+    background: -webkit-linear-gradient(bottom left, #fe4b4b 48%, #fd5e5e 72%);
+    background: linear-gradient(to top right, #fe4b4b 48%, #fd5e5e 72%);
     width: 100%;
     height: 200px;
     -webkit-box-align: center;
@@ -53,12 +70,30 @@
       width: 90%;
       height: 40%;
       background-color: transparent;
-      border: 1px #eee solid;
-      font-size: 2em;
+      border: transparent;
+      color: #fff;
+      font-size: 2.8em;
       padding: 0 10px;
       text-align: right; }
       .calculator .screen input:focus {
         outline: transparent; }
+    .calculator .screen:before {
+      content: "";
+      position: absolute;
+      height: 99.6%;
+      box-shadow: 0px -15px 0px #df4a4a;
+      width: 20px;
+      background: -webkit-linear-gradient(bottom, #fe4b4b 48%, #fd5e5e 72%);
+      background: linear-gradient(to top, #fe4b4b 48%, #fd5e5e 72%);
+      right: -20px;
+      top: 11px;
+      z-index: 1;
+      -webkit-transform: skewY(45deg);
+          -ms-transform: skewY(45deg);
+              transform: skewY(45deg);
+      opacity: 1;
+      -webkit-transition: opacity 0.5s ease-in;
+      transition: opacity 0.5s ease-in; }
   .calculator .keyboard {
     background: #fff;
     width: 100%;
@@ -66,22 +101,59 @@
     position: relative; }
     .calculator .keyboard button {
       margin: 10px;
-      width: 40px;
+      width: 50px;
       height: 40px;
       background: transparent;
-      border: 0; }
-    .calculator .keyboard :before {
+      border: 0;
+      color: #c3c1c1;
+      font-weight: bold;
+      font-size: 20px; }
+    .calculator .keyboard:before {
       content: "";
       position: absolute;
       height: 99.6%;
-      width: 15px;
+      width: 20px;
       background-color: #fff;
-      right: -15px;
-      top: 5px;
+      right: -20px;
+      top: 10px;
       z-index: 1;
-      -webkit-transform: skewY(30deg);
-          -ms-transform: skewY(30deg);
-              transform: skewY(30deg); }
-  .calculator:hover {
+      -webkit-transform: skewY(45deg);
+          -ms-transform: skewY(45deg);
+              transform: skewY(45deg);
+      -webkit-transition: opacity 0.5s ease-in;
+      transition: opacity 0.5s ease-in; }
+  .calculator.normal {
+    border: solid 7px #bfc0ba;
     -webkit-transform: rotateX(0) rotateY(0) rotateZ(0);
-            transform: rotateX(0) rotateY(0) rotateZ(0); }
+            transform: rotateX(0) rotateY(0) rotateZ(0);
+    box-shadow: 0 0 0 #c7cccf, 0 0 0 #c7cccf, 0 0 0 #c7cccf, 0 0 0 #c7cccf, 0 0 0 #c7cccf, 0 0 0 #c7cccf; }
+    .calculator.normal:after {
+      opacity: 0; }
+    .calculator.normal .keyboard:before {
+      opacity: 0; }
+    .calculator.normal .screen:before {
+      opacity: 0; }
+  .calculator:after {
+    content: "";
+    background-image: -webkit-linear-gradient(left, transparent 4%, rgba(102, 103, 99, 0.7), transparent 90%);
+    background-image: linear-gradient(to right, transparent 4%, rgba(102, 103, 99, 0.7), transparent 90%);
+    width: 51px;
+    height: 26px;
+    -webkit-transform: rotate(-67deg);
+        -ms-transform: rotate(-67deg);
+            transform: rotate(-67deg);
+    position: absolute;
+    top: 627px;
+    left: 282px;
+    border-radius: 30%;
+    z-index: 1;
+    -webkit-transition: all 0.5s ease-in;
+    transition: all 0.5s ease-in; }
+  .calculator:before {
+    content: "";
+    position: absolute;
+    height: 5px;
+    width: 5px;
+    background-color: #df4a4a;
+    right: 230px;
+    top: 40px; }

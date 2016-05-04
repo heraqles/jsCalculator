@@ -1,11 +1,12 @@
 $bgStart: #FA7575;
 $bgFinish: #FA9898;
-$bgPhone:#CFCACA;
+$bgPhone:#ebeae6;
 
 
 .main{
 	margin: 10vh auto;
 	height: 80vh;
+	position:relative;
 	width: 80%;
 	display:flex;
 	align-items:center;
@@ -15,6 +16,17 @@ $bgPhone:#CFCACA;
       to top right,
       $bgStart 20% , $bgFinish 40%
     );
+    .change{
+    	position: absolute;
+    	left:50px;
+    	color:#fff;
+    	top:50px;
+    	background: linear-gradient(to top right, #fe4b4b 48%, #fd5e5e 72%);
+    	padding: 20px;
+    	text-transform: uppercase;
+    	font-weight: bold;
+    	border-radius:3px;
+    }
 }
 .perspective{
 	perspective:1000px;
@@ -22,10 +34,13 @@ $bgPhone:#CFCACA;
 .calculator{
 	height: 580px;
 	width: 300px;
-	padding-top: 50px;
+	padding-top: 90px;
+	border:transparent;
+	transition:border 0.5s ease-in;
 	background: $bgPhone;
 	.screen{
-		background: #FA7575;
+		box-shadow:0px -15px 0px #df4a4a;
+		background: linear-gradient(to top right, #fe4b4b 48%, #fd5e5e 72%);
 		width: 100%;
 		height: 200px;
 		align-items:center;
@@ -36,13 +51,28 @@ $bgPhone:#CFCACA;
 			width: 90%;
 			height: 40%;
 			background-color: transparent;
-			border:1px #eee solid;
-			font-size: 2em;
+			border:transparent;
+			color:#fff;
+			font-size: 2.8em;
 			padding: 0 10px;
 			text-align: right;
 			&:focus{
 				outline:transparent;
 			}
+		}
+		&:before{
+			content: "";
+		    position: absolute;
+		    height: 99.6%;
+		    box-shadow:0px -15px 0px #df4a4a;
+		    width: 20px;
+		    background: linear-gradient(to top, #fe4b4b 48%, #fd5e5e 72%);
+		    right: -20px;
+		    top: 11px;
+		    z-index: 1;
+		    transform: skewY(45deg);
+		    opacity:1;
+		    transition: opacity 0.5s ease-in;
 		}
 	}
 	.keyboard{
@@ -52,32 +82,66 @@ $bgPhone:#CFCACA;
 		position: relative;
 		button{
 			margin: 10px;
-			width: 40px;
+			width: 50px;
 			height: 40px;
 			background: transparent;
 			border:0;
+			color:#c3c1c1;
+			font-weight: bold;
+			font-size: 20px;
 		}
-		:before{
+		&:before{
 			content: "";
 		    position: absolute;
 		    height: 99.6%;
-		    width: 15px;
+		    width: 20px;
 		    background-color: #fff;
-		    right: -15px;
-		    top: 5px;
+		    right: -20px;
+		    top: 10px;
 		    z-index: 1;
-		    transform: skewY(30deg);
+		    transform: skewY(45deg);
+		    transition: opacity 0.5s ease-in;
 		}
 	}
-	//transform: rotateX(40deg) rotateY(0deg) rotateZ(47deg);
-	border-radius: 15px;
-	box-shadow: 5px 2px 0 #bbb,
-				9px 6px 0 #bbb,
-				12px 7px 0 #bbb,
-				15px 10px 0 #bbb,
-				0 7px 20px #999;
-	transition: transform 1s ease-in;
-	&:hover{
+
+	transform: rotateX(33deg) rotateY(-10deg) rotateZ(60deg);
+	border-radius: 50px;
+	box-shadow: 6px 2px 0 #c7cccf, 11px 4px 0 #c7cccf, 11px 8px 0 #c7cccf, 4px 4px 0 #c7cccf, 19px 11px 0px #c7cccf, 20px 13px 0 #c7cccf;
+	transition: all 0.5s ease-in;
+	&.normal{
+		border:solid 7px #bfc0ba;
 		transform:rotateX(0) rotateY(0) rotateZ(0);
+		box-shadow: 0 0 0 #c7cccf, 0 0 0 #c7cccf, 0 0 0 #c7cccf, 0 0 0 #c7cccf, 0 0 0 #c7cccf, 0 0 0 #c7cccf; 
+		&:after{
+			opacity:0;
+		}
+		.keyboard:before{
+			opacity:0;
+		}
+		.screen:before{
+			opacity:0;
+		}
+	}
+	&:after{
+		content:"";
+		background-image: linear-gradient(to right, transparent 4%, rgba(102,103,99,0.7), transparent 90%);
+    	width: 51px;
+    	height: 26px;
+    	transform: rotate(-67deg);
+    	position: absolute;
+    	top: 627px;
+    	left: 282px;
+    	border-radius: 30%;
+    	z-index: 1;	
+    	transition: all 0.5s ease-in;	
+	}
+	&:before{
+		content: "";
+	    position: absolute;
+	    height: 5px;
+	    width: 5px;
+	    background-color: #df4a4a;
+		right: 230px;
+    	top: 40px;
 	}
 }

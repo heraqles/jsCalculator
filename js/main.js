@@ -2,11 +2,14 @@
     'use strict';
 
     var screenVal = document.querySelector('.screen input'),
-        keyboard = document.querySelector('.keyboard');
+        calculator = document.querySelector('.calculator'),
+        keyboard = document.querySelector('.keyboard'),
+        changeButton = document.querySelector('.change');
     
     function addValue(key){
-        console.log(key)
         screenVal.value += key;
+        var output = validateValue(screenVal.value);
+        screenVal.value = output;
     }
 
     function clearScreen(){
@@ -18,9 +21,10 @@
     }
 
     function calculate(){
-        var s = screenVal.value,
-            value = s.replace(/^0+/, '');
-        // eliminate unuses 0
+        var value = screenVal.value,
+            ifLastOperator = /[-+*/]$/;
+        // percent(value);
+        value = value.replace(ifLastOperator, '');
         screenVal.value = eval(value);
     }
 
@@ -33,14 +37,20 @@
         }
     }
 
-    function percent(){
-        var value = screenVal.value,
-            re = /^\d+$/;
-        if (re.test(value)){
-            value = value * 0.01;
-            screenVal.value = value;
-        }
+    function validateValue(el){
+        var s = el,
+            removeZero = /0(?=\d)/g,
+            changeMinus = /--/,
+            //remove unses 0
+            value = s.replace(removeZero, '').replace(changeMinus,'+');
+        return value;
     }
+    // function percent(el){
+    //     var value = el,
+    //         percentNumReg = /\d+(?=%)/g,
+    //         percentNum = value.match(percentNumReg);
+            
+    // }
 
     function validKeybordKey(el){
         var allowKey = [
@@ -96,9 +106,22 @@
     function allTimeActive(){
         this.focus();
     }
+    function test(){
+        var output = validateValue(screenVal.value);
+        screenVal.value = output;
+    }
     window.addEventListener('load', defaultScreen, false);
     document.addEventListener('keypress', keyValue, false);
     screenVal.addEventListener('blur', allTimeActive , true);
+    screenVal.addEventListener('input', test , false);
     keyboard.addEventListener('click', buttonValue, false);
- 
+    changeButton.addEventListener('click', function(){
+        if (calculator.classList.contains('normal')) {
+            calculator.classList.remove('normal');
+        } else {
+            calculator.classList.add('normal');
+        }
+    },false);
+
+
 })();
