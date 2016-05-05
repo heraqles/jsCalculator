@@ -65,8 +65,15 @@
     }
     function buttonValue(e){
         var key = e.target.innerHTML;
+        function turnOnAnimation(el){
+            el.classList.add('button-click');
+            el.addEventListener('animationend', function(){
+                el.classList.remove('button-click');
+            }, false);
+        }
         screenVal.focus();
         if(e.target && e.target.nodeName === 'BUTTON'){
+            turnOnAnimation(e.target);
             if(key === '='){
                 calculate();
             }else if (key === 'C'){
@@ -77,7 +84,7 @@
                 changeMark();
             }else if (key === '%'){
                 addValue(key);
-                percent();
+                // percent();
             }else{
                 addValue(key);
             }
@@ -93,7 +100,7 @@
             }else if(key == 67){
                 clearScreen();
             }else if(key == 53){
-                percent();
+                // percent();
             }
         }else{
             e.preventDefault();
