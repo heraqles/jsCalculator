@@ -93,6 +93,26 @@
     function keyValue(e){
         var key = e.keyCode;
         screenVal.focus();
+        var letter = String.fromCharCode(key);
+        function turnOnAnimation(el){
+            el.classList.add('button-click');
+            el.addEventListener('animationend', function(){
+                el.classList.remove('button-click');
+            }, false);
+        }
+        function checkLetter(el){
+            var buttons = keyboard.querySelectorAll('button'),
+                arrButtons = Array.prototype.slice.call(buttons);
+            arrButtons.forEach( function(e) {
+                var test = e.innerHTML;
+                if (el === test){
+                    e.classList.add('button-click');
+                }
+            });
+
+        }
+        checkLetter(letter);
+        turnOnAnimation();
         if(validKeybordKey(key)){
             if (key === 61 || key === 13){
                 calculate();
@@ -116,12 +136,14 @@
     function test(){
         var output = validateValue(screenVal.value);
         screenVal.value = output;
+
     }
     window.addEventListener('load', defaultScreen, false);
     document.addEventListener('keypress', keyValue, false);
     screenVal.addEventListener('blur', allTimeActive , true);
     screenVal.addEventListener('input', test , false);
     keyboard.addEventListener('click', buttonValue, false);
+
     changeButton.addEventListener('click', function(){
         if (calculator.classList.contains('normal')) {
             calculator.classList.remove('normal');
