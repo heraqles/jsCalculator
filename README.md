@@ -1,7 +1,7 @@
 # jsCalculator
 simple vanilla js calculator
 
-#see on Codpen
+see on codepen
 
 http://codepen.io/heraqles/full/dXRkXE/
 
